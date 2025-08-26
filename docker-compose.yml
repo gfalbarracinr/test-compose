@@ -1,13 +1,13 @@
 services:
   redis:
     image: redis:7.2
-    container_name: my_redis
+    container_name: myredis
     ports:
       - "6379:6379"
 
   nginx:
     image: nginx:1.27
-    container_name: my_nginx
+    container_name: mynginx
     ports:
       - "9090:80"
     volumes:
