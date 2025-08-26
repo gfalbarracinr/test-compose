@@ -1,18 +1,14 @@
 services:
-  frontend:
-    build:
-      context: .
-    image: my-frontend:latest
-    container_name: frontend
+  redis:
+    image: redis:7.2
+    container_name: my_redis
     ports:
-      - "80:80"
+      - "6379:6379"
 
-  node:
-    image: node:18
-    container_name: node
-    working_dir: /usr/src/app
-    volumes:
-      - .:/usr/src/app
-    command: npm start
+  nginx:
+    image: nginx:1.27
+    container_name: my_nginx
     ports:
-      - "3492:3492"
+      - "9090:80"
+    volumes:
+      - ./html:/usr/share/nginx/html:ro
