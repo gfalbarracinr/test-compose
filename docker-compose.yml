@@ -2,6 +2,17 @@ services:
   frontend:
     build:
       context: .
+    image: my-frontend:latest
     container_name: frontend
     ports:
       - "80:80"
+
+  node:
+    image: node:18
+    container_name: node
+    working_dir: /usr/src/app
+    volumes:
+      - .:/usr/src/app
+    command: npm start
+    ports:
+      - "3492:3492"
